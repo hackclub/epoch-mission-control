@@ -1,7 +1,6 @@
 import { Challenge } from "./lib/challenge";
 
 import twoFactorAuth from "./2fa";
-import airlock from "./airlock";
 import centering from "./centering";
 import keys from "./keys";
 import name from "./name";
@@ -69,10 +68,9 @@ More commotion. You think you hear "_Pizza's here!_", but you can't quite be sur
 Appreciating the rarity of space pizza, you quickly thank her and log off.`
   ),
   /* 11 */ keys,
-  /* 12 */ airlock,
-  /* 13 */ intro(
+  /* 12 */ intro(
     "Fueling Up: Part 1",
-    `Much to your excitement, the airlock controls light up and begin working. Your crew jumps into the rover, turns the key, and... nothing happens.
+    `Much to your excitement, your synergy has unlocked the door. Your crew jumps into the rover, turns the key, and... nothing happens.
 
 _sigh._ The fuel gauge tells you all you need to know.
 
@@ -94,7 +92,7 @@ Here we go: :point_down:
 
 _That doesn't sound good._`
   ),
-  /* 14 */ fuel,
+  /* 13 */ fuel,
 ];
 
 export default challenges;
