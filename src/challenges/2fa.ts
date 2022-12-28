@@ -39,7 +39,8 @@ const urls: { [team: number]: string } = {
   27: "permit-login",
   28: "approve",
   29: "approve-login",
-  30: "epoch-auth"
+  30: "epoch-auth",
+  31: "authorize"
 };
 
 const twoFactorAuth: Challenge = {
