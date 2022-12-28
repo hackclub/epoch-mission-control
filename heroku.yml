@@ -1,4 +1,0 @@
-build:
-  web: yarn install --cwd /src/
-run:
-  web: yarn start --cwd /src/
