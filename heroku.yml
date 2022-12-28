@@ -1,5 +1,4 @@
 build:
-  docker:
-    web: Dockerfile
+  web: yarn install --cwd /src/
 run:
-  web: yarn start
+  web: yarn start --cwd /src/
