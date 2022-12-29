@@ -113,7 +113,7 @@ const twoFactorAuth: Challenge = {
       `You enter the password, but of course it can't be that simple. _Somebody_ set up two-factor authentication that can only be fulfilled by a specific person via a Slack slash command. And that person is millions of miles away.
 
 You know three things though:
-- The slash command endpoint is https://starship.clb.li/slack/commands/${url}
+- The slash command endpoint is https://epoch-mission-control.herokuapp.com/slack/commands/${url}
 - The only user who can use that slash command has a user ID of \`U013B6CPV62\`
 - The developers were too busy to build in signing secret verification
 
