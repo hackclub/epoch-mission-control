@@ -96,6 +96,9 @@ app.command("/starship-status", async ({ ack }) => {
     url: process.env.DATABASE_URL,
     entities: [Team],
     synchronize: true,
+    ssl: {
+      rejectUnauthorized: false
+    }
   });
 
   // Init challenges
