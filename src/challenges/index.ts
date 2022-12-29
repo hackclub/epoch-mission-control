@@ -1,6 +1,4 @@
 import { Challenge } from "./lib/challenge";
-
-import twoFactorAuth from "./2fa";
 import centering from "./centering";
 import keys from "./keys";
 import name from "./name";
@@ -10,6 +8,7 @@ import password from "./password";
 import intro from "./util/intro";
 import fuel from "./fuel";
 import random from "./random";
+import translator from "./ascii";
 
 const challenges: Challenge[] = [
   /* 0 */ intro(
@@ -35,10 +34,10 @@ You and your fellow crew members quickly discover that the _Orpheus_' communicat
   /* 4 */ oxygen,
   /* 5 */ oxygen2,
   /* 6 */ random,
+  /* 7 */ translator,
   //  wires,
-  /* 7 */ centering,
-  /* 8 */ password,
-  /* 9 */ twoFactorAuth,
+  /* 8 */ centering,
+  /* 9 */ password,
   /* 10 */ intro(
   "Making Contact",
   `_You hear static._
