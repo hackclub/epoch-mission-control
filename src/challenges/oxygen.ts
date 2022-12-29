@@ -31,7 +31,7 @@ export default {
   },
   async start(ctx: ChallengeContext) {
     await ctx.slack.client.chat.postMessage({
-      text: `The secret URL is https://starship.clb.li/oxygen/6${ctx.team.id}763. You are recommended to pay attention to the response.`,
+      text: `The secret URL is https://epoch-mission-control.herokuapp.com/oxygen/6${ctx.team.id}763. You are recommended to pay attention to the response.`,
       blocks: [
         {
           type: "section",
