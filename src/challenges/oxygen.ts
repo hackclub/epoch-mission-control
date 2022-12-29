@@ -40,7 +40,7 @@ export default {
 
 Thankfully, the ship's engineers built in a backup oxygen reserve, but it's rather difficult to access.
 
-To switch your ship's oxygen over to the backup, you'll need to make a POST request to this spooky url https://epoch-mission-control.herokuapp.com/oxygen/6${ctx.team.id}763.`,
+To switch your ship's oxygen over to the backup, you'll need to make a POST request to this spooky URL: https://epoch-mission-control.herokuapp.com/oxygen/6${ctx.team.id}763.`,
           },
         },
         {
