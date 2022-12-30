@@ -38,19 +38,27 @@ export const setChallenge = async (
   if (!challenges[index]) {
     if (shouldCallStart) {
       const teams = await Team.find();
-
+      try{
       await app.client.chat.postMessage({
         channel: team.channel,
         text: transcript.end.win(team.name),
       });
+    }
+    catch(e){
 
+    }
       teams.forEach(async (t) => {
         if (t.id !== team.id) {
           setChallenge(t, null, false);
+          try{
           app.client.chat.postMessage({
             channel: t.channel,
             text: transcript.end.lose(t.name),
           });
+        }
+        catch(e){
+
+        }
         }
       });
     }
@@ -76,6 +84,7 @@ export const setChallenge = async (
       userToken: process.env.SLACK_USER_TOKEN as string,
       solve: onSolve(team.id, index),
       post: async (text: string, divider = true) => {
+        try{
         await app.client.chat.postMessage({
           text,
           blocks: [
@@ -97,6 +106,10 @@ export const setChallenge = async (
           channel: team.channel,
           token: process.env.SLACK_TOKEN as string,
         });
+      }
+      catch(e){
+          console.log(team.channel)
+      }
       },
       data: null,
     },
