@@ -22,6 +22,7 @@ function onReaction(ctx: ChallengeContext) {
       event.item.type === "message" &&
       event.item.channel === ctx.team.channel
     ) {
+      try{
       const resp = await ctx.slack.client.conversations.history({
         latest: event.item.ts,
         inclusive: true,
@@ -29,6 +30,10 @@ function onReaction(ctx: ChallengeContext) {
         channel: ctx.team.channel,
         token: ctx.token,
       });
+    }
+      catch(e){
+        console.log(ctx.team.channel)
+    }
 
       if (!resp.messages) return;
 
@@ -36,7 +41,7 @@ function onReaction(ctx: ChallengeContext) {
 
       if (message) {
         const { text, reactions } = message;
-
+        try{
         if (
           reactions &&
           (reactions
@@ -73,7 +78,9 @@ function onReaction(ctx: ChallengeContext) {
             text: `Would you like to make *${text}* your team name?`,
             channel: ctx.team.channel,
           });
-        }
+        }}catch(e){
+          console.log(ctx.team.channel)
+      }
       }
     }
   };
@@ -90,7 +97,7 @@ export default {
       body,
     }: SlackActionMiddlewareArgs<BlockAction<ButtonAction>>) => {
       await ack();
-
+      try{
       await ctx.slack.client.chat.update({
         ts: body.message!.ts,
         channel: body.channel!.id,
@@ -113,9 +120,13 @@ export default {
         ],
         text: `Would you like to make *${text}* your team name?`,
       });
+    }catch(e){
+      console.log(ctx.team.channel)
+  }
 
       ctx.team.name = text;
       await ctx.team.save();
+      try{
       await ctx.slack.client.conversations.rename({
         channel: ctx.team.channel,
         name: `${!isProduction ? "test-" : ""}spaceteam-${text
@@ -125,22 +136,12 @@ export default {
           .replace(/[^a-z0-9-]/g, "")}`,
         token: ctx.userToken,
       });
-
+    }catch(e){
+      console.log(ctx.team.channel)
+  }
       await ctx.post(`I've set your team name to *${text}*!`);
 
       const teams = await Team.find();
-
-      // Notify other teams
-      teams.forEach(async (team) => {
-        if (team.id !== ctx.team.id) {
-          await ctx.slack.client.chat.postMessage({
-            text: `:point_right: Heads up, team ${ctx.team.id} has decided on a name: *${text}*`,
-            token: ctx.token,
-            channel: team.channel,
-          });
-        }
-      });
-
       await ctx.solve();
     };
 
