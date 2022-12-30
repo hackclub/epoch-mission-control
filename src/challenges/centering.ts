@@ -42,21 +42,19 @@ const centering: Challenge = {
         await browser.close();
 
         const img1 = PNG.sync.read(screenshot);
-        const img2 = PNG.sync.read(await readFile("screenshot.png"));
+        const img2 = PNG.sync.read(await readFile("screenshot-a.png"));
+        const img3 = PNG.sync.read(await readFile("screenshot-b.png"));
 
         const diffPixels = pixelmatch(img1.data, img2.data, null, 800, 600);
+        
+        const diffPixels2 = pixelmatch(img1.data, img3.data, null, 800, 600);
 
-        if (diffPixels > 500) {
-          try{
+        if (diffPixels > 500 && diffPixels2 > 500) {
           await ctx.slack.client.reactions.add({
             name: "x",
             channel: event.channel,
             timestamp: event.ts,
           });
-        }
-          catch(e){
-            console.log(team.channel)
-        }
 
           await ctx.slack.client.files.upload({
             channels: ctx.team.channel,
@@ -65,15 +63,11 @@ const centering: Challenge = {
               "Hmm... that doesn't look quite right to me. Here's what I'm seeing :arrow_down: (make sure you've followed all the instructions!)",
           });
         } else {
-          try{
           await ctx.slack.client.reactions.add({
             name: "white_check_mark",
             channel: event.channel,
             timestamp: event.ts,
           });
-        }catch(e){
-          console.log(team.channel)
-      }
 
           await ctx.slack.client.files.upload({
             filename: "EEBY DEEBY",

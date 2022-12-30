@@ -31,7 +31,6 @@ export default {
   },
   async start(ctx: ChallengeContext) {
     await ctx.slack.client.chat.postMessage({
-      text: `The secret URL is https://starship.clb.li/oxygen/6${ctx.team.id}763. You are recommended to pay attention to the response.`,
       blocks: [
         {
           type: "section",
@@ -41,7 +40,7 @@ export default {
 
 Thankfully, the ship's engineers built in a backup oxygen reserve, but it's rather difficult to access.
 
-To switch your ship's oxygen over to the backup, you'll need to make a POST request to a URL that's hidden in this message.`,
+To switch your ship's oxygen over to the backup, you'll need to make a POST request to this spooky URL: https://epoch-mission-control.herokuapp.com/oxygen/6${ctx.team.id}763.`,
           },
         },
         {

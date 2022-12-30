@@ -39,6 +39,7 @@ export const setChallenge = async (
     if (shouldCallStart) {
       const teams = await Team.find();
       try{
+      console.log(team.channel)
       await app.client.chat.postMessage({
         channel: team.channel,
         text: transcript.end.win(team.name),

@@ -20,7 +20,7 @@ const next: Challenge = {
       if (event.channel !== ctx.team.channel) return;
 
       if (timeout === undefined && event.text?.includes("50")) {
-        ctx.post("Your 15 seconds starts now.", false);
+        ctx.post("Your 30 seconds starts now.", false);
 
         timeout = setTimeout(() => {
           timeout = undefined;
@@ -32,7 +32,7 @@ const next: Challenge = {
             `:boom: You're out of time! Please re-enter the correct amount of fuel stimulant to try again.`,
             false
           );
-        }, 15000);
+        }, 30000);
 
         return;
       }
@@ -92,7 +92,7 @@ const next: Challenge = {
 
 - Calculate how much fuel stimulant (in mililiters) is required for *10 liters of fuel* _(put your answer in the chat :arrow_down:)_
 
-- Lifting the somewhat large fuel canister requires the strength of two people, so your crew will have *15 seconds* for at least two members to count from 1 to 20 together.
+- Lifting the somewhat large fuel canister requires the strength of two people, so your crew will have *30 seconds* for at least two members to count from 1 to 20 together.
 
 Same rules as <#CDJMS683D>: numbers must be in order, and *no counting consecutively.*`);
   },
