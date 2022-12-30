@@ -34,7 +34,7 @@ const random: Challenge = {
     },
     async start(ctx: ChallengeContext) {
         await ctx.post(`0.5390815646058106, 0.2891964436397205, 0.030... It seems like your computer broke right as you were about to generate the last few digits of the initialization sequence. Thankfully you set the seed to the current date. Now what was
-Enter the last few digits of the third random number down in the chat :arrow_down: (P.S), make sure to use python to generate the random numbers.`);
+Enter the last few digits of the third random number down in the chat :arrow_down: (PS: make sure to use Python to generate the random numbers)`);
     },
 };
 
