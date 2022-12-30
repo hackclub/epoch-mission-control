@@ -22,8 +22,9 @@ function onReaction(ctx: ChallengeContext) {
       event.item.type === "message" &&
       event.item.channel === ctx.team.channel
     ) {
+      let resp
       try{
-      const resp = await ctx.slack.client.conversations.history({
+       resp = await ctx.slack.client.conversations.history({
         latest: event.item.ts,
         inclusive: true,
         limit: 1,
