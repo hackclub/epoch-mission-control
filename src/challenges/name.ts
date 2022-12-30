@@ -23,7 +23,7 @@ function onReaction(ctx: ChallengeContext) {
       event.item.channel === ctx.team.channel
     ) {
       let resp
-      try{
+
        resp = await ctx.slack.client.conversations.history({
         latest: event.item.ts,
         inclusive: true,
@@ -31,10 +31,8 @@ function onReaction(ctx: ChallengeContext) {
         channel: ctx.team.channel,
         token: ctx.token,
       });
-    }
-      catch(e){
+
         console.log(ctx.team.channel)
-    }
 
       if (!resp.messages) return;
 
