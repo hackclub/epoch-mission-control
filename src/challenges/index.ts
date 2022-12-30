@@ -7,7 +7,6 @@ import oxygen2 from "./oxygen-2";
 import password from "./password";
 import intro from "./util/intro";
 import fuel from "./fuel";
-import random from "./random";
 import translator from "./ascii";
 
 const challenges: Challenge[] = [
@@ -33,7 +32,6 @@ You and your fellow crew members quickly discover that the _Orpheus_' communicat
 ),
   /* 4 */ oxygen,
   /* 5 */ oxygen2,
-  /* 6 */ random,
   /* 7 */ translator,
   //  wires,
   /* 8 */ centering,
