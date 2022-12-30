@@ -91,7 +91,6 @@ Here we go: :point_down:
 
 _That doesn't sound good._`
 ),
-  /* 13 */ fuel,
 ];
 
 export default challenges;
