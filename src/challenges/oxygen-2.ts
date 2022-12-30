@@ -14,17 +14,22 @@ function onMessage(ctx: ChallengeContext) {
       event.channel === ctx.team.channel &&
       (event as GenericMessageEvent).text === "46553"
     ) {
-      await Promise.all([
-        ctx.post(
-          ":white_check_mark: `Access granted. Oxygen reserve migration complete.`"
-        ),
-        ctx.slack.client.reactions.add({
-          timestamp: event.ts,
-          token: ctx.token,
-          name: "white_check_mark",
-          channel: event.channel,
-        }),
-      ]);
+      try{
+        await Promise.all([
+          ctx.post(
+            ":white_check_mark: `Access granted. Oxygen reserve migration complete.`"
+          ),
+          ctx.slack.client.reactions.add({
+            timestamp: event.ts,
+            token: ctx.token,
+            name: "white_check_mark",
+            channel: event.channel,
+          }),
+        ]);
+      }
+      catch(e){
+        console.log(e)
+      }
       await ctx.solve();
     } else if (
       event.channel === ctx.team.channel &&
